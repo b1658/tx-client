@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Merged into the consumer app. CanTx opens a TCP socket to the box's own root adbd at
+         127.0.0.1. socket() requires the inet group (AID 3003), which is granted ONLY by this
+         permission, and loopback is NOT exempt — without it the connect() fails with EPERM before
+         any frame is built. CanTx catches that as a SocketException, so the failure surfaces
+         nowhere; declaring INTERNET here (normal, auto-granted at install) is what makes TX work. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
